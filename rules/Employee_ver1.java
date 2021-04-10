@@ -4,22 +4,27 @@ import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 
+/*Есть какие-то поля
+Есть конструктор для создания с какими-то параметрами
+Есть геттерсы-сеттеры*/
+
 public class Employee {
 
-    static int portal_id = 0;
+    static int portal_id = 0;           // ? - для чего, STATIC
 
-    private String name;
-    private String surname;
-    private String patronymic;
-    private String afterbirth;
-    private String position;
-    private String adress_work;
-    private String grade;
-    private String telephone_stack;
-    private boolean at_work = true;
+    private long id;                    // ID                               // long/Long
+    private String name;                // Имя              name
+    private String surname;             // Фамилия          surName
+    private String patronymic;          // Отчество         middleName
+    private String afterbirth;          // Дата рожждения   birthDay        // Date?
+    private String position;            // Должность                        // int/Integer -> хранить в БД
+    private String adress_work;         // Рабочий адрес    workAddress
+    private String grade;               // -
+    private String telephone_stack;     // -
+    private boolean at_work = true;     // -
 
 
-    public Employee() {
+    public Employee() {             // Для наследования, но public нужен ли?
         System.out.println();
     }
 
@@ -34,6 +39,8 @@ public class Employee {
         this.at_work = at_work;
         this.grade = grade;
     }
+
+    // Подумать может добавить конструктор с МИНИМАЛЬНЫМ, но необходимым количеством параметров
 
     public String getName() {
         return name;
@@ -121,8 +128,21 @@ public class Employee {
                 '}';
     }
 
+/*
+    if(myHuman.humanAge == 7 && humanWeight >= basic.getWeight()) {
+        myHuman.humanAge++;
+        System.out.println("portal_id = " + portal_id);
+    } else {
+        System.out.println("Erorr there");
+    }
+
+    (myHuman.humanAge == 7 &&humanWeight>=basic.getWeight()) ? {myHuman.humanAge++; System.out.println("portal_id = " + portal_id);} : System.out.println("Erorr there");
+*/
+
 }
-class Employeemain {
+
+
+/*class Employeemain {
     public static void main(String[] args) throws IOException {
         // Здесь создаём несколько сотрудников
 
@@ -146,5 +166,5 @@ class Employeemain {
         writer.write("\r\n");
         writer.close();
     }
-}
+}*/
 
