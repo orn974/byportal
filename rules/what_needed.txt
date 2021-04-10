@@ -1,0 +1,18 @@
+Подключение БД: Создать рабочее подключение с минимальным примером
+к БД для возможность использования Employee и REST
+
+MODEL:
+ Модель данных (наши классы и т.д.): Employee, наследники (MtsSales, MtsTech, ...)
+
+БД:
+ Repository-слой + подключение к БД + запуск самой БД (MySQL/Postgre/H2)
+ (MySQL:____) <- *****Repository : findAllHumans(), findHumanById(Long id) -> Employee-объекты
+   // Наполнить базу данных 10 Human'ов (разобраться как - через data.sql, import.sql)
+
+REST:
+ Service-слой + RestController
+ (*****Repository) <- Service-слой <- RestController : findAllHumans(), findHumanById(Long id) -> {"id":"5", ""name":"Vasya", "surname":"sdfdsf"}
+
+FRONT-END:
+ WEB-APP (Thymeleaf, MVC Controller)
+  Нужно будет реализовать "Consumer'ы" - для получения с REST'а объектов (findAllHumans(), findHumanById(Long id))
