@@ -1,7 +1,2 @@
 target/
 .idea/
-.mvn/
-pom.xml.tag
-pom.xml.releaseBackup
-pom.xml.versionsBackup
-pom.xml.next
