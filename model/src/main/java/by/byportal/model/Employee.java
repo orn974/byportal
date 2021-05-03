@@ -1,4 +1,4 @@
-package by.byportal;
+package by.byportal.model;
 
 public class Employee {
 

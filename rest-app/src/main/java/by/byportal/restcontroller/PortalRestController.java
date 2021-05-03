@@ -1,7 +1,6 @@
 package by.byportal.restcontroller;
 
-//import by.brest.mts.portal.Employee;
-import by.byportal.Employee;
+import by.byportal.model.Employee;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -30,6 +29,8 @@ public class PortalRestController {
         employees.add(new Employee("Рагозинский", "Алексей", 35, "Junior"));
         employees.add(new Employee("Якимчик", "Александр", 34, "Junior"));
         employees.add(new Employee("Савицкий", "Владимир", 38, "Junior"));
+        // TODO: Implement returning list from EmployeeService layer
+
         return employees;
     }
 
