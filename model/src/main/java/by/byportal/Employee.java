@@ -1,112 +1,115 @@
 package by.byportal;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
+
 public class Employee {
 
-        static int portal_id = 0;
-        private String name;
-        private String surname;
-        private String patronymic;
-        private String afterbirth;
-        private String position;
-        private String adress_work;
-        private Integer age;
-        // private String grade;
-        private String telephone_stack;
-        private boolean at_work = true;
+        static int portalId = 0;
+        private String firstName;        // First Name
+        private String lastName;
+        private String middleName;
+        private String birthDate;
+        private String jobPosition;
+        private String workingAddress;
+        //private Integer age;          // TODO: Нужен ли здесь age ?
+        private List<String> phoneNumbers;
+        private byte availibility;      // is at work? available? busy?
 
-    public Employee(String surname, String name, Integer age, String position) {
-        this.name = name;
-        this.surname = surname;
-        this.position = position;
-        this.age = age;
-    }
 
+    // CONSTRUCTORS
     public Employee() {
             System.out.println();
         }
 
-        public Employee(String name, String surname, String patronymic, String afterbirth, String position, String adress_work, String telephone_stack, boolean at_work/*, String grade*/) {
-            this.name = name;
-            this.surname = surname;
-            this.patronymic = patronymic;
-            this.afterbirth = afterbirth;
-            this.position = position;
-            this.adress_work = adress_work;
-            this.telephone_stack = telephone_stack;
-            this.at_work = at_work;
-            //this.grade = grade;
-        }
-
-        public String getName() {
-            return name;
-        }
-
-        public String getSurname() {
-            return surname;
-        }
-
-        public String getPatronymic() {
-            return patronymic;
-        }
-
-        public String getDatebirth() {
-            return afterbirth;
-        }
-
-        public String getPosition() {
-            return position;
-        }
-
-        public String getAdress_work() {
-            return adress_work;
-        }
-
-        //public String getGrade() {
-        //  return grade();}
-
-        public String getTelephone_stask() {
-            return telephone_stack;
-        }
-
-        public boolean getAt_work() {
-            return at_work;
-        }
-
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public void setSurname (String surname) {
-            this.surname = surname;
-        }
-
-        public void setPatronymic (String patronymic) {
-            this.patronymic = patronymic;
-        }
-
-        public void setDatebirth (String datebirth) {
-            this.afterbirth = afterbirth;
-        }
-
-        public void setPosition (String position) {
-            this.position = position;
-        }
-
-        public void setAdress_work (String adress_work) {
-            this.adress_work = adress_work;
-        }
-
-        //public String getGrade() {
-        //  return grade();}
-
-        public void setTelephone_stack (String telephone_stask) {
-            this.telephone_stack = telephone_stask;
-        }
-
-        public void setAt_work (boolean at_work) {
-            this.at_work = at_work;
-        }
-
-
+    public Employee(String firstName, String lastName, String birthDate) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.birthDate = birthDate;
     }
+
+    // METHODS
+    public Integer getAge() throws ParseException {
+        Date birthDateParsed = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH).parse(birthDate);
+        System.out.println("birthDateParsed = " + birthDateParsed);
+        return 0;
+    }
+
+    /*  GETTERS  AND  SETTERS*/
+    public static int getPortalId() {
+        return portalId;
+    }
+
+    public static void setPortalId(int portalId) {
+        Employee.portalId = portalId;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getMiddleName() {
+        return middleName;
+    }
+
+    public void setMiddleName(String middleName) {
+        this.middleName = middleName;
+    }
+
+    public String getBirthDate() {
+        return birthDate;
+    }
+
+    public void setBirthDate(String birthDate) {
+        this.birthDate = birthDate;
+    }
+
+    public String getJobPosition() {
+        return jobPosition;
+    }
+
+    public void setJobPosition(String jobPosition) {
+        this.jobPosition = jobPosition;
+    }
+
+    public String getWorkingAddress() {
+        return workingAddress;
+    }
+
+    public void setWorkingAddress(String workingAddress) {
+        this.workingAddress = workingAddress;
+    }
+
+    public List<String> getPhoneNumbers() {
+        return phoneNumbers;
+    }
+
+    public void setPhoneNumbers(List<String> phoneNumbers) {
+        this.phoneNumbers = phoneNumbers;
+    }
+
+    public byte getAvailibility() {
+        return availibility;
+    }
+
+    public void setAvailibility(byte availibility) {
+        this.availibility = availibility;
+    }
+}
 

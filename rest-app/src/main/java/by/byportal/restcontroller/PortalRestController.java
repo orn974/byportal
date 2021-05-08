@@ -19,17 +19,19 @@ public class PortalRestController {
     }
     @GetMapping("/employee")
     public Employee getEmployee() {
-        Employee employee1 = new Employee("Сергей", "Иванюклвич", 35, "TeamLid");
-        return employee1;
+        //Employee employee1 = new Employee("Сергей", "Иванюклвич", 35, "TeamLid");
+        Employee exampleEmployee = new Employee("Иванюкович", "Сергей", "21/06/1985");
+        return exampleEmployee; //employee1;
     }
     @GetMapping("/employees")
     public List<Employee> getEmployees() {
         List<Employee> employees = new ArrayList<>();
-        employees.add(new Employee("Островский", "Руслан", 37, "Developer"));
+        // TODO: Доделать эмплоёв и тут в соответствии с классом
+/*        employees.add(new Employee("Островский", "Руслан", 37, "Developer"));
         employees.add(new Employee("Левченко", "Александр", 36, "Junior"));
         employees.add(new Employee("Рагозинский", "Алексей", 35, "Junior"));
         employees.add(new Employee("Якимчик", "Александр", 34, "Junior"));
-        employees.add(new Employee("Савицкий", "Владимир", 38, "Junior"));
+        employees.add(new Employee("Савицкий", "Владимир", 38, "Junior"));*/
         return employees;
     }
 
