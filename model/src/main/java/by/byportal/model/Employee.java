@@ -1,4 +1,4 @@
-package by.byportal;
+package by.byportal.model;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
