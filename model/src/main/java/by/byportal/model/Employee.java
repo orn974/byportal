@@ -1,6 +1,8 @@
 package by.byportal.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.util.Date;
 import java.util.List;
@@ -10,6 +12,7 @@ import java.util.Objects;
 public class Employee {
 
     @Id
+    @GeneratedValue(strategy= GenerationType.AUTO)
     Long employeeId;
     private int portalId = 0;
     private String firstName;
@@ -44,6 +47,14 @@ public class Employee {
         this.age = age;
         this.phoneNumber = phoneNumber;
         this.availibility = availibility;
+    }
+
+    public Long getEmployeeId() {
+        return employeeId;
+    }
+
+    public void setEmployeeId(Long employeeId) {
+        this.employeeId = employeeId;
     }
 
     public int getPortalId() {
