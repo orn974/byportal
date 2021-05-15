@@ -1,51 +1,57 @@
 package by.byportal.model;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
+import java.util.Objects;
 
+@Entity
 public class Employee {
 
-        static int portalId = 0;
-        private String firstName;        // First Name
-        private String lastName;
-        private String middleName;
-        private String birthDate;
-        private String jobPosition;
-        private String workingAddress;
-        //private Integer age;          // TODO: Нужен ли здесь age ?
-        private List<String> phoneNumbers;
-        private byte availibility;      // is at work? available? busy?
+    @Id
+    Long employeeId;
+    private int portalId = 0;
+    private String firstName;
+    private String lastName;
+    private String middleName;
+    private Date birthDate;
+    private String jobPosition;
+    private String workingAddress;
+    private Integer age;
+    private String phoneNumber;
+    private byte availibility;
 
 
-    // CONSTRUCTORS
     public Employee() {
-            System.out.println();
-        }
+        System.out.println();
+    }
 
-    public Employee(String firstName, String lastName, String birthDate) {
+    public Employee(String firstName, String lastName, Date birthDate) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthDate = birthDate;
     }
 
-    // METHODS
-    public Integer getAge() throws ParseException {
-        Date birthDateParsed = new SimpleDateFormat("dd/MM/yyyy", Locale.ENGLISH).parse(birthDate);
-        System.out.println("birthDateParsed = " + birthDateParsed);
-        return 0;
+    public Employee(int portalId, String firstName, String lastName, String middleName, Date birthDate, String jobPosition, String workingAddress, Integer age, String phoneNumber, byte availibility) {
+        this.portalId = portalId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.middleName = middleName;
+        this.birthDate = birthDate;
+        this.jobPosition = jobPosition;
+        this.workingAddress = workingAddress;
+        this.age = age;
+        this.phoneNumber = phoneNumber;
+        this.availibility = availibility;
     }
 
-    /*  GETTERS  AND  SETTERS*/
-    public static int getPortalId() {
+    public int getPortalId() {
         return portalId;
     }
 
-    public static void setPortalId(int portalId) {
-        Employee.portalId = portalId;
+    public void setPortalId(int portalId) {
+        this.portalId = portalId;
     }
 
     public String getFirstName() {
@@ -72,11 +78,11 @@ public class Employee {
         this.middleName = middleName;
     }
 
-    public String getBirthDate() {
+    public Date getBirthDate() {
         return birthDate;
     }
 
-    public void setBirthDate(String birthDate) {
+    public void setBirthDate(Date birthDate) {
         this.birthDate = birthDate;
     }
 
@@ -96,12 +102,20 @@ public class Employee {
         this.workingAddress = workingAddress;
     }
 
-    public List<String> getPhoneNumbers() {
-        return phoneNumbers;
+    public Integer getAge() {
+        return age;
     }
 
-    public void setPhoneNumbers(List<String> phoneNumbers) {
-        this.phoneNumbers = phoneNumbers;
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public byte getAvailibility() {
@@ -111,5 +125,57 @@ public class Employee {
     public void setAvailibility(byte availibility) {
         this.availibility = availibility;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Employee employee = (Employee) o;
+        return portalId == employee.portalId && availibility == employee.availibility && Objects.equals(employeeId, employee.employeeId) && Objects.equals(firstName, employee.firstName) && Objects.equals(lastName, employee.lastName) && Objects.equals(middleName, employee.middleName) && Objects.equals(birthDate, employee.birthDate) && Objects.equals(jobPosition, employee.jobPosition) && Objects.equals(workingAddress, employee.workingAddress) && Objects.equals(age, employee.age) && Objects.equals(phoneNumber, employee.phoneNumber);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(employeeId, portalId, firstName, lastName, middleName, birthDate, jobPosition, workingAddress, age, phoneNumber, availibility);
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" +
+                "employeeId=" + employeeId +
+                ", portalId=" + portalId +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", middleName='" + middleName + '\'' +
+                ", birthDate=" + birthDate +
+                ", jobPosition='" + jobPosition + '\'' +
+                ", workingAddress='" + workingAddress + '\'' +
+                ", age=" + age +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                ", availibility=" + availibility +
+                '}';
+    }
 }
 
+/*
+public Date(int year, int month, int date) {
+        this(year, month, date, 0, 0, 0);
+    }
+
+    /**
+     * Allocates a {@code Date} object and initializes it so that
+     * it represents the instant at the start of the minute specified by
+     * the {@code year}, {@code month}, {@code date},
+     * {@code hrs}, and {@code min} arguments, in the local
+     * time zone.
+     *
+     * @param   year    the year minus 1900.
+     * @param   month   the month between 0-11.
+     * @param   date    the day of the month between 1-31.
+     * @param   hrs     the hours between 0-23.
+     * @param   min     the minutes between 0-59.
+     * @see     java.util.Calendar
+     * @deprecated As of JDK version 1.1,
+     * replaced by {@code Calendar.set(year + 1900, month, date, hrs, min)}
+     * or {@code GregorianCalendar(year + 1900, month, date, hrs, min)}.
+     */

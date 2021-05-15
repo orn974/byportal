@@ -1,15 +1,21 @@
 package by.byportal.restcontroller;
 
 //import by.brest.mts.portal.Employee;
-import by.byportal.Employee;
+import by.byportal.EmployeeRepository;
+import by.byportal.model.Employee;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @RestController
 public class PortalRestController {
+
+    @Autowired
+    EmployeeRepository employeeRepository;
 
     @GetMapping("/hello")
     public String homePage() {
@@ -20,12 +26,13 @@ public class PortalRestController {
     @GetMapping("/employee")
     public Employee getEmployee() {
         //Employee employee1 = new Employee("Сергей", "Иванюклвич", 35, "TeamLid");
-        Employee exampleEmployee = new Employee("Иванюкович", "Сергей", "21/06/1985");
+        Employee exampleEmployee = new Employee("Иванюкович", "Сергей", new Date(82, 5, 22));
+        //Employee testEmployee = employeeRepository.????
         return exampleEmployee; //employee1;
     }
     @GetMapping("/employees")
     public List<Employee> getEmployees() {
-        List<Employee> employees = new ArrayList<>();
+        List<Employee> employees = employeeRepository.findAll();
         // TODO: Доделать эмплоёв и тут в соответствии с классом
 /*        employees.add(new Employee("Островский", "Руслан", 37, "Developer"));
         employees.add(new Employee("Левченко", "Александр", 36, "Junior"));

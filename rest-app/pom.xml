@@ -23,7 +23,7 @@
     </dependency>
     <dependency>
       <groupId>by.byportal</groupId>
-      <artifactId>service</artifactId>
+      <artifactId>dao</artifactId>
     </dependency>
 
     <dependency>
