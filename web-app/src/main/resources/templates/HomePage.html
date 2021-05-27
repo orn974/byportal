@@ -8,7 +8,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-<div th:each="el : ${pageList}" >
+
+
+<div th:each="el : ${pageListWeb}" >
     <tr style="height: 18px;">
         <td style="width: 25%; height: 18px;"; th:text ="${el.portalId}"></td>
         <td style="width: 25%; height: 18px;"; th:text="${el.firstName}"></td>

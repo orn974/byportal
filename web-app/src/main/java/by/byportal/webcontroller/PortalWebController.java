@@ -13,13 +13,13 @@ import workclass.Employee;
 public class PortalWebController {
 
     RestTemplate restTemplate;
-    final String ROOT_URL = "http://192.168.3.220:8080/";
+    final String ROOT_URL = "http://192.168.3.222:8080/";
     @GetMapping("/web/get")
     public String employeeGet (Model model){
         restTemplate=new RestTemplate();
         ResponseEntity<Employee[]> person = restTemplate.getForEntity(ROOT_URL+"employees", Employee[].class);
         Employee[] pageList = person.getBody();
-        model.addAttribute("pageList", pageList);
+        model.addAttribute("pageListWeb", pageList);
         return "HomePage";
     }
     @GetMapping("/web/post")
