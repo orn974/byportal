@@ -43,7 +43,7 @@
 </div>
 <div class="container mt-5 mb-5">
     <h1>Изменение данных сотрудника</h1>
-    <form action="/emploeeput/{id}" method="post">
+    <form action="/web/put/{id}" method="post">
         <input type="number" name="id" placeholder="Введите ID" class="form-control"><br>
         <input type="text" name="firstName" placeholder="Введите имя" class="form-control"><br>
         <input type="text" name="lastName" placeholder="Введите фамилию" class="form-control"><br>
@@ -55,6 +55,13 @@
         <input type="text" name="phoneNumbers" placeholder="Введите номер телефона" class="form-control"><br>
         <input type="number" name="availibilit" placeholder="Введите активность" class="form-control"><br>
         <button type="submit" class="btn btn-success">Изменить </button>
+    </form>
+</div>
+<div class="container mt-5 mb-5">
+    <h1>Удаление сотрудника</h1>
+    <form action="/web/del/{id}" method="post">
+        <input type="number" name="id" placeholder="Введите ID" class="form-control"><br>
+               <button type="submit" class="btn btn-success">Удалить </button>
     </form>
 </div>
 </body>

@@ -4,6 +4,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.client.RestTemplate;
@@ -31,16 +32,22 @@ public class PortalWebController {
     public String addEmployee(Employee postEmploee) throws Exception {
         restTemplate = new RestTemplate();
         restTemplate.postForObject(ROOT_URL + "/emploees",postEmploee,Employee.class);
-        return "redirect:/web/post";
+        return "redirect:/web/get";
     }
-    @GetMapping("/web/put")
+    @GetMapping("/web/put/{id}")
     public String addEmployeePut(Model model){
         return "HomePage";
     }
     @PutMapping("/web/put")
-    public String putEmploeeOne (Employee putEmploee) throws Exception {
+    public String putEmploeeOne (@PathVariable(value = "id") long id, Employee putEmploee) throws Exception {
         restTemplate = new RestTemplate();
         restTemplate.put(ROOT_URL + "/emploees/{id}", putEmploee, Employee.class);
-        return "redirect:/web/put";
+        return "redirect:/web/get";
+    }
+    @PostMapping("/web/del/{id}")
+    public String blogPostDelete (@PathVariable(value = "id") long id, Model model){
+        restTemplate = new RestTemplate();
+        restTemplate.delete(ROOT_URL + "/emploees/{id}", Employee.class);
+        return "redirect:/web/get";
     }
 }
