@@ -8,18 +8,15 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-
-
-<div th:each="el : ${pageListWeb}" >
-    <tr style="height: 18px;">
-        <td style="width: 25%; height: 18px;"; th:text ="${el.portalId}"></td>
+<div th:each="el : ${pagelistweb}" >
+    <tr style="height: 40px;">
+        <td style="width: 25%; height: 18px;"; th:text="${el.portalId}"></td>
         <td style="width: 25%; height: 18px;"; th:text="${el.firstName}"></td>
         <td style="width: 25%; height: 18px;"; th:text="${el.lastName}"></td>
         <td style="width: 25%; height: 18px;"; th:text="${el.middleName}"></td>
         <td style="width: 25%; height: 18px;"; th:text="${el.birthDate}"></td>
         <td style="width: 25%; height: 18px;"; th:text="${el.jobPosition}"></td>
         <td style="width: 25%; height: 18px;"; th:text="${el.workingAddress}"></td>
-        <td style="width: 25%; height: 18px;"; th:text="${el.phoneNumbers}"></td>
         <td style="width: 25%; height: 18px;"; th:text="${el.phoneNumbers}"></td>
         <td style="width: 25%; height: 18px;"; th:text="${el.availibility}"></td>
 </div>
