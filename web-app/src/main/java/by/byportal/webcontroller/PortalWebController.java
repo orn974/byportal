@@ -34,10 +34,10 @@ public class PortalWebController {
         restTemplate.postForObject(ROOT_URL + "/emploees",postEmploee,Employee.class);
         return "redirect:/web/get";
     }
-    @GetMapping("/web/put/{id}")
+   /* @GetMapping("/web/put/{id}")
     public String addEmployeePut(Model model){
         return "HomePage";
-    }
+    }*/
     @PutMapping("/web/put")
     public String putEmploeeOne (@PathVariable(value = "id") long id, Employee putEmploee) throws Exception {
         restTemplate = new RestTemplate();
@@ -45,7 +45,7 @@ public class PortalWebController {
         return "redirect:/web/get";
     }
     @PostMapping("/web/del/{id}")
-    public String blogPostDelete (@PathVariable(value = "id") long id, Model model){
+    public String delEmploeeOne (@PathVariable(value = "id") long id, Model model){
         restTemplate = new RestTemplate();
         restTemplate.delete(ROOT_URL + "/emploees/{id}", Employee.class);
         return "redirect:/web/get";
