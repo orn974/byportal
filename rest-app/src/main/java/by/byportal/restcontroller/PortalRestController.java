@@ -3,12 +3,12 @@ package by.byportal.restcontroller;
 import by.byportal.repository.EmployeeRepository;
 import by.byportal.model.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDate;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 
 @RestController
 public class PortalRestController {
@@ -24,9 +24,9 @@ public class PortalRestController {
     }
     @GetMapping("/employee")
     public Employee getEmployee() {
-        //Employee employee1 = new Employee("Сергей", "Иванюклвич", 35, "TeamLid");
+        Employee employee1 = new Employee("Островский", "Руслан", LocalDate.of(55,55,55));
         Employee exampleEmployee = new Employee("Иванюкович", "Сергей", LocalDate.of(1985,5,25));
-        //Employee testEmployee = employeeRepository.????
+        //Employee testEmployee = employeeRepository.save(employee1);
         return exampleEmployee; //employee1;
     }
     @GetMapping("/employees")
@@ -34,13 +34,15 @@ public class PortalRestController {
         System.out.println("getEmployees() rest-controller");
         List<Employee> employees = employeeRepository.findAll();
         // TODO: Доделать эмплоёв и тут в соответствии с классом
-/*        employees.add(new Employee("Островский", "Руслан", 37, "Developer"));
-        employees.add(new Employee("Левченко", "Александр", 36, "Junior"));
-        employees.add(new Employee("Рагозинский", "Алексей", 35, "Junior"));
-        employees.add(new Employee("Якимчик", "Александр", 34, "Junior"));
-        employees.add(new Employee("Савицкий", "Владимир", 38, "Junior"));*/
+        employees.add(new Employee("Островский", "Руслан", LocalDate.of(55,4,77)));
+        employees.add(new Employee("Левченко", "Александр", LocalDate.of(55,4,77)));
+        employees.add(new Employee("Рагозинский", "Алексей", LocalDate.of(55,44,77)));
+        employees.add(new Employee("Якимчик", "Александр", LocalDate.of(55,44,77)));
+        employees.add(new Employee("Савицкий", "Владимир", LocalDate.of(55,44,77)));
+        //employeeRepository.save(employees);
         return employees;
     }
-//ORN
-
 }
+   //ORN
+
+
