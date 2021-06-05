@@ -33,6 +33,7 @@
   <name>byportal</name>
   <url>http://www.byportal.by</url>
 
+
   <properties>
     <java.version>1.8</java.version>
     <spring.boot.version>2.4.5</spring.boot.version>

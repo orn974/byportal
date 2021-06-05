@@ -33,12 +33,12 @@ public class PortalRestController {
     public List<Employee> getEmployees() {
         System.out.println("getEmployees() rest-controller");
         List<Employee> employees = employeeRepository.findAll();
-        // TODO: Доделать эмплоёв и тут в соответствии с классом
-        employees.add(new Employee("Островский", "Руслан", LocalDate.of(55,4,77)));
+         //TODO: Доделать эмплоёв и тут в соответствии с классом
+        /*employees.add(new Employee("Островский", "Руслан", LocalDate.of(55,4,77)));
         employees.add(new Employee("Левченко", "Александр", LocalDate.of(55,4,77)));
         employees.add(new Employee("Рагозинский", "Алексей", LocalDate.of(55,44,77)));
         employees.add(new Employee("Якимчик", "Александр", LocalDate.of(55,44,77)));
-        employees.add(new Employee("Савицкий", "Владимир", LocalDate.of(55,44,77)));
+        employees.add(new Employee("Савицкий", "Владимир", LocalDate.of(55,44,77)));*/
         //employeeRepository.save(employees);
         return employees;
     }

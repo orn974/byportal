@@ -26,7 +26,7 @@ public class Employee {
     private String workingAddress;
     private Integer age;
     private String phoneNumber;
-    private byte availibility;
+    private int availibility;
 
 
     public Employee() {
@@ -39,7 +39,7 @@ public class Employee {
         this.birthDate = birthDate;
     }
 
-    public Employee(int portalId, String firstName, String lastName, String middleName, LocalDate birthDate, String jobPosition, String workingAddress, Integer age, String phoneNumber, byte availibility) {
+    public Employee(int portalId, String firstName, String lastName, String middleName, LocalDate birthDate, String jobPosition, String workingAddress, Integer age, String phoneNumber, int availibility) {
         this.portalId = portalId;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -132,7 +132,7 @@ public class Employee {
         this.phoneNumber = phoneNumber;
     }
 
-    public byte getAvailibility() {
+    public int getAvailibility() {
         return availibility;
     }
 
