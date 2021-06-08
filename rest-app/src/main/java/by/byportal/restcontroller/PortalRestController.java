@@ -3,12 +3,18 @@ package by.byportal.restcontroller;
 import by.byportal.repository.EmployeeRepository;
 import by.byportal.model.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpRequest;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 public class PortalRestController {
@@ -29,18 +35,33 @@ public class PortalRestController {
         //Employee testEmployee = employeeRepository.????
         return exampleEmployee; //employee1;
     }
+
     @GetMapping("/employees")
     public List<Employee> getEmployees() {
         System.out.println("getEmployees() rest-controller");
         List<Employee> employees = employeeRepository.findAll();
         // TODO: Доделать эмплоёв и тут в соответствии с классом
-/*        employees.add(new Employee("Островский", "Руслан", 37, "Developer"));
+/*      employees.add(new Employee("Островский", "Руслан", 37, "Developer"));
         employees.add(new Employee("Левченко", "Александр", 36, "Junior"));
         employees.add(new Employee("Рагозинский", "Алексей", 35, "Junior"));
         employees.add(new Employee("Якимчик", "Александр", 34, "Junior"));
         employees.add(new Employee("Савицкий", "Владимир", 38, "Junior"));*/
         return employees;
     }
+
+    // DELETE -> http://localhost:8090/emploees/55
+    @DeleteMapping(value = "/emploees/{personId:\\d+}")
+    public ResponseEntity<?> deleteProfile(@PathVariable Long personId) throws Exception {
+        //profileService.deleteProfile(personId);
+            Optional<Employee> employee = employeeRepository.findById(personId);
+            if(employee.isPresent()) {
+                employeeRepository.deleteEmployeeByEmployeeId(personId);
+                return new ResponseEntity<>(HttpStatus.ACCEPTED);
+            } else {
+                return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+            }
+    }
+
 //ORN
 
 }
