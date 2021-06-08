@@ -136,7 +136,7 @@ public class Employee {
         return availibility;
     }
 
-    public void setAvailibility(byte availibility) {
+    public void setAvailibility(int availibility) {
         this.availibility = availibility;
     }
 
