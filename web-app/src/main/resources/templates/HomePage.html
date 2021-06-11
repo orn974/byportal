@@ -58,25 +58,23 @@
         <button type="submit" class="btn btn-success">Добавить </button>
     </form>
 </div>-->
-<!--<div class="container mt-5 mb-5">
+<div class="container mt-5 mb-5">
     <h1>Изменение данных сотрудника</h1>
-    <form action="/web/put/{id}" method="post">
-        <input type="number" name="portalId" placeholder="Введите ID" class="form-control"><br>
-        <input type="text" name="firstName" placeholder="Введите имя" class="form-control"><br>
-        <input type="text" name="lastName" placeholder="Введите фамилию" class="form-control"><br>
-        <input type="text" name="middleName" placeholder="Введите отчество" class="form-control"><br>
-        <input type="date" name="birthDate" placeholder="Введите дату рождения" class="form-control"><br>
-        <input type="text" name="jobPosition" placeholder="Введите должность" class="form-control"><br>
-        <input type="text" name="workingAddress" placeholder="Введите рабочий адрес" class="form-control"><br>
-        <input type="number" name="age" placeholder="Введите возраст" class="form-control"><br>
-        <input type="text" name="phoneNumber" placeholder="Введите номер телефона" class="form-control"><br>
-        <input type="number" name="availibility" placeholder="Введите активность" class="form-control"><br>
-        <button type="submit" class="btn btn-success">Изменить </button>
-    </form>
-</div>-->
+    <form th:object="${putemployee}" action="/web/put/{id}" method="post">
+        <input type="number" th:field="*{portalId}" placeholder="Введите ID" class="form-control">portalId<br>
+        <input type="text" th:field="*{firstName}"  placeholder="Введите имя" class="form-control">firstName<br>
+        <input type="text" th:field="*{lastName}"  placeholder="Введите фамилию" class="form-control">lastName<br>
+        <input type="text" th:field="*{middleName}"  placeholder="Введите отчество" class="form-control"><br>
+        <input type="datetime-local" th:field="*{birthDate}" placeholder="Введите дату рождения" class="form-control"><br>
+        <input type="text" th:field="*{jobPosition}"  placeholder="Введите должность" class="form-control"><br>
+        <input type="text" th:field="*{workingAddress}"  placeholder="Введите рабочий адрес" class="form-control"><br>
+        <input type="number" th:field="*{age}"  placeholder="Введите возраст" class="form-control"><br>
+        <input type="text" th:field="*{phoneNumber}"  placeholder="Введите номер телефона" class="form-control"><br>
+        <input type="number" th:field="*{availibility}" placeholder="Введите активность" class="form-control"><br>
+</div>
 <div class="container mt-5 mb-5">
     <h1>Удаление сотрудника</h1>
-    <form action="/web/del/{id}" method="post">
+    <form action="/web/{id}" method="post">
         <input type="number" name="id" placeholder="Введите ID" class="form-control"><br>
                <button type="submit" class="btn btn-success">Удалить </button>
     </form>

@@ -8,11 +8,11 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
-@EnableAutoConfiguration
-@Configuration
-@ComponentScan
+//@EnableAutoConfiguration
+//@Configuration
+//@ComponentScan
 @EntityScan("by.byportal.model")
-//@SpringBootApplication(exclude={DataSourceAutoConfiguration.class})
+@SpringBootApplication(exclude={DataSourceAutoConfiguration.class})
 public class PortalWebApplication {
 
     public static void main(String[] args) throws Throwable {

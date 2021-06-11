@@ -23,6 +23,10 @@ public class PortalWebController {
         model.addAttribute("newemployee", newEmployee);
         return "HomePage";
     }
+   /* @GetMapping("/")
+    public String startPage (Model model){
+        return "StartPage";
+    }*/
 
     @GetMapping("/web/post")
     public String addEmployeeGet(Model model){
@@ -35,14 +39,11 @@ public class PortalWebController {
         restTemplate.postForObject(ROOT_URL + "emploees",newemployee,Employee.class);
         return "redirect:/web/get";
     }
-   /* @GetMapping("/web/put/{id}")
-    public String addEmployeePut(Model model){
-        return "HomePage";
-    }*/
-    @PutMapping("/web/put")
-    public String putEmploeeOne (@PathVariable(value = "id") long id, Employee putEmploee) throws Exception {
+
+    @PutMapping("/web/put/{id}")
+    public String putEmployeeOne (@PathVariable(value = "id") long id, Employee putemployee) throws Exception {
         restTemplate = new RestTemplate();
-        restTemplate.put(ROOT_URL + "emploees/{id}", putEmploee, Employee.class);
+        restTemplate.put(ROOT_URL + "emploees/{id}", putemployee, Employee.class);
         return "redirect:/web/get";
     }
 
