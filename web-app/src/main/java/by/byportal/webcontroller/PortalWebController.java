@@ -43,14 +43,14 @@ public class PortalWebController {
     @PutMapping("/web/put/{id}")
     public String putEmployeeOne (@PathVariable(value = "id") long id, Employee putemployee) throws Exception {
         restTemplate = new RestTemplate();
-        restTemplate.put(ROOT_URL + "emploees/{id}", putemployee, Employee.class);
+        restTemplate.put(ROOT_URL + "employees/{id}", putemployee, Employee.class);
         return "redirect:/web/get";
     }
 
     @DeleteMapping("/web/{id}")
     public String delEmploeeOne (@PathVariable(value = "id") long id, Model model){
         restTemplate = new RestTemplate();
-        restTemplate.delete(ROOT_URL + "emploees/{id}", Employee.class);
+        restTemplate.delete(ROOT_URL + "employees/{id}", Employee.class);
         // TO REST: DELETE -> http://localhost:8090/emploees/55
         return "redirect:/web/get";
     }
