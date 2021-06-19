@@ -10,7 +10,6 @@
     <module>rest-app</module>
     <module>dao</module>
     <module>web-app</module>
-    <module>sshwa</module>
 
   </modules>
     <dependencies>
