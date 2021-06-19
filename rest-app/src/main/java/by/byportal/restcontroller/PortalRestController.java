@@ -6,10 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.Date;
@@ -22,6 +19,8 @@ public class PortalRestController {
     @Autowired
     EmployeeRepository employeeRepository;
 
+
+    //TODO: СаняЛ: очистить Rest - убрать лишнее, оставить только получиние ОДНОГО емплоя, всех емплойв, удаление, обновление и создание
     @GetMapping("/hello")
     public String homePage() {
         System.out.println("hello - проверка вывода в консоль надписи из вкладки /hello");
@@ -62,6 +61,18 @@ public class PortalRestController {
             }
     }
 
-//ORN
+    @PutMapping(value = "/emploees/{personId:\\d+}")                // TODO: СаняЯ: Написать правильный маппинг для ПУТа
+    public ResponseEntity<?> update(/*@PathVariable Long personId*/) throws Exception {     // TODO: СаняЯ: Поменять входные данные, нам ведь нужно обновить эмплоя
+        Optional<Employee> employee = employeeRepository.findById(personId);
+        if(employee.isPresent()) {
+            //EmployeeRepository.save();   // Сохранение
+            employeeRepository.save()                       // TODO: СаняЯ: Что и как передать в сейв?
+            return new ResponseEntity<>(HttpStatus.ACCEPTED);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+    }
+
+    // TODO: СаняЯ: Сделать POST (как PUT почти)
 
 }

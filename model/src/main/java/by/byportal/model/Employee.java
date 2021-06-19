@@ -28,7 +28,7 @@ public class Employee {
     private String phoneNumber;
     private int availibility;
 
-
+    // TODO: ЛёхаР: оставить только Четыре поля (ID, Имя, Фамилия, Long Номер телефона) и соотв. геттеры/сеттеры и т.д.
     public Employee() {
         System.out.println();
     }

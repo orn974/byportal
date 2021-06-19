@@ -60,7 +60,7 @@
 </div>-->
 <div class="container mt-5 mb-5">
     <h1>Изменение данных сотрудника</h1>
-    <form th:object="${putemployee}" action="/web/put/{id}" method="post">
+    <form th:object="${putemployee}" action="/web/put" method="post">
         <input type="number" th:field="*{portalId}" placeholder="Введите ID" class="form-control">portalId<br>
         <input type="text" th:field="*{firstName}"  placeholder="Введите имя" class="form-control">firstName<br>
         <input type="text" th:field="*{lastName}"  placeholder="Введите фамилию" class="form-control">lastName<br>
@@ -71,6 +71,7 @@
         <input type="number" th:field="*{age}"  placeholder="Введите возраст" class="form-control"><br>
         <input type="text" th:field="*{phoneNumber}"  placeholder="Введите номер телефона" class="form-control"><br>
         <input type="number" th:field="*{availibility}" placeholder="Введите активность" class="form-control"><br>
+    </form>
 </div>
 <div class="container mt-5 mb-5">
     <h1>Удаление сотрудника</h1>
