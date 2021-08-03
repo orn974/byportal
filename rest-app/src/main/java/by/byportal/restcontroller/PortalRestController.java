@@ -27,6 +27,8 @@ public class PortalRestController {
         String someString = "проверка работоспособности ";
         return someString + " 5";
     }
+
+    // TODO: СаняЛ: Доделать GET эмплоя по id
     @GetMapping("/employee")
     public Employee getEmployee() {
         //Employee employee1 = new Employee("Сергей", "Иванюклвич", 35, "TeamLid");
@@ -48,31 +50,40 @@ public class PortalRestController {
         return employees;
     }
 
+    // PUT
+    @PutMapping(value = "/employees")
+    public ResponseEntity<?>  update(@RequestBody Employee updateEmployee) throws Exception {
+        Optional<Employee> employee = employeeRepository.findById(updateEmployee.getEmployeeId());
+        if(employee.isPresent()) {
+            employeeRepository.save(updateEmployee);
+            return new ResponseEntity<>(HttpStatus.ACCEPTED);
+        } else {
+            return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+        }
+    }
+
+    // POST
+    // POST: http://localhost:/employees   <- Employee { id: 5, firstName: "Serega" , .... }
+    @PostMapping(value = "/employees")
+    public ResponseEntity<?> save(@RequestBody Employee saveEmployee) {
+        Employee temp = employeeRepository.save(saveEmployee);
+        if (temp.getEmployeeId() > 0)
+            return new ResponseEntity<>(HttpStatus.CREATED);
+        else
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
     // DELETE -> http://localhost:8090/emploees/55
     @DeleteMapping(value = "/emploees/{personId:\\d+}")
     public ResponseEntity<?> deleteProfile(@PathVariable Long personId) throws Exception {
         //profileService.deleteProfile(personId);
-            Optional<Employee> employee = employeeRepository.findById(personId);
-            if(employee.isPresent()) {
-                employeeRepository.deleteEmployeeByEmployeeId(personId);
-                return new ResponseEntity<>(HttpStatus.ACCEPTED);
-            } else {
-                return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
-            }
-    }
-
-    @PutMapping(value = "/emploees/{personId:\\d+}")                // TODO: СаняЯ: Написать правильный маппинг для ПУТа
-    public ResponseEntity<?> update(/*@PathVariable Long personId*/) throws Exception {     // TODO: СаняЯ: Поменять входные данные, нам ведь нужно обновить эмплоя
         Optional<Employee> employee = employeeRepository.findById(personId);
         if(employee.isPresent()) {
-            //EmployeeRepository.save();   // Сохранение
-            employeeRepository.save()                       // TODO: СаняЯ: Что и как передать в сейв?
+            employeeRepository.deleteEmployeeByEmployeeId(personId);
             return new ResponseEntity<>(HttpStatus.ACCEPTED);
         } else {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
         }
     }
-
-    // TODO: СаняЯ: Сделать POST (как PUT почти)
 
 }
