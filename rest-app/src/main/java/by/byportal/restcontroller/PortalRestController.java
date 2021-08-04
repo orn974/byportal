@@ -77,13 +77,13 @@ public class PortalRestController {
     @DeleteMapping(value = "/emploees/{personId:\\d+}")
     public ResponseEntity<?> deleteProfile(@PathVariable Long personId) throws Exception {
         //profileService.deleteProfile(personId);
-        Optional<Employee> employee = employeeRepository.findById(personId);
-        if(employee.isPresent()) {
-            employeeRepository.deleteEmployeeByEmployeeId(personId);
-            return new ResponseEntity<>(HttpStatus.ACCEPTED);
-        } else {
-            return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
-        }
+            Optional<Employee> employee = employeeRepository.findById(personId);
+            if(employee.isPresent()) {
+                employeeRepository.deleteEmployeeByEmployeeId(personId);
+                return new ResponseEntity<>(HttpStatus.ACCEPTED);
+            } else {
+                return new ResponseEntity<>(HttpStatus.NOT_ACCEPTABLE);
+            }
     }
 
 }
