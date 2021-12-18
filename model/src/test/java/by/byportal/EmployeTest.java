@@ -1,32 +1,31 @@
 package by.byportal;
 
-import by.byportal.model.Employee;
+import by.byportal.model.Employe;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.*;
 import org.springframework.util.Assert;
 
 import java.time.LocalDate;
 
-public class EmployeeTest {
+public class EmployeTest {
 
     @Test
     public void testSetGetFirstName() {
-        Employee testEmployee = new Employee();
+        Employe testEmploye = new Employe();
         String name = "Alex";
-        testEmployee.setFirstName(name);
+        testEmploye.setFirstName(name);
 
-        Assert.isTrue(testEmployee.getFirstName() == name,
+        Assert.isTrue(testEmploye.getFirstName() == name,
                 "Employee firstName setter/getter is not working: Name is not Alex");
     }
 
     @Test
     public void testSetGetLastName() {
-        Employee testEmployee = new Employee();
+        Employe testEmploye = new Employe();
         String lastName = "Rabinovich";
-        testEmployee.setLastName(lastName);
+        testEmploye.setLastName(lastName);
 
         // Этот тест недостоверно проверяет lastName еттер/геттер
-        Assert.notNull(testEmployee.getLastName(),
+        Assert.notNull(testEmploye.getLastName(),
                 "Employee lastName setter/getter is not working: NULL");
     }
 
@@ -35,12 +34,12 @@ public class EmployeeTest {
         LocalDate insertedDate = LocalDate.now();
         String name = "John";
         String last = "Markovich";
-        Employee testEmployee = new Employee(name, last, insertedDate);
+        Employe testEmploye = new Employe(name, last, insertedDate);
 
         Assert.isTrue(
-                testEmployee.getFirstName() == name
-                        && testEmployee.getLastName() == last
-                        && testEmployee.getBirthDate() == insertedDate
+                testEmploye.getFirstName() == name
+                        && testEmploye.getLastName() == last
+                        && testEmploye.getBirthDate() == insertedDate
                 ,"Employee Employee(String, String, LocalDate) constructor is not properly working"
         );
     }

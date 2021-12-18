@@ -9,14 +9,14 @@ import javax.persistence.Id;
 import java.time.LocalDate;
 
 @Entity
-public class Employee {
+public class Employe {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    Long employeeId;
+    Long employeId;
     private String firstName;
     private String lastName;
-    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm")
+    @DateTimeFormat(pattern = "yyyy-MM-dd'T'HH:mm") //'T'HH:mm
     private LocalDate birthDate;
     //private int portalId = 0;
     //private String middleName;
@@ -26,18 +26,18 @@ public class Employee {
     //private String phoneNumber;
     //private int availibility;
 
-    public Employee() {
+    public Employe() {
         System.out.println();
     }
 
-    public Employee(String firstName, String lastName, LocalDate birthDate) {
+    public Employe(String firstName, String lastName, LocalDate birthDate) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthDate = birthDate;
     }
 
-    public Long getEmployeeId() {
-        return employeeId;
+    public Long getEmployeId() {
+        return employeId;
     }
 
 /*    public void setEmployeeId(Long employeeId) {
@@ -70,8 +70,8 @@ public class Employee {
 
     @Override
     public String toString() {
-        return "Employee{" +
-                "employeeId=" + employeeId +
+        return "Employe{" +
+                "employeId=" + employeId +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", birthDate=" + birthDate +

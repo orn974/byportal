@@ -1,20 +1,18 @@
 package by.byportal.webcontroller.filessaweready;
 
-import by.byportal.model.Employee;
+import by.byportal.model.Employe;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.util.WorkbookUtil;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.io.FileOutputStream;
 import java.io.IOException;
 
 public class SaveFileExcel {
-    public static void saveFile(Employee[] pageList) {
+    public static void saveFile(Employe[] pageList) {
         Workbook wb = new HSSFWorkbook(); //создали книгу
         Sheet sheet0 = wb.createSheet("Superlist"); //создали страницу
 

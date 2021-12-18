@@ -1,6 +1,6 @@
 package by.byportal.webcontroller;
 
-import by.byportal.model.Employee;
+import by.byportal.model.Employe;
 import by.byportal.webcontroller.filessaweready.ReadFileExcel;
 import by.byportal.webcontroller.filessaweready.SaveFileExcel;
 import org.springframework.http.ResponseEntity;
@@ -20,12 +20,12 @@ public class PortalWebController {
     @GetMapping("/web/get")
     public String employeeGet (Model model){
         restTemplate=new RestTemplate();
-        ResponseEntity<Employee[]> person = restTemplate.getForEntity(ROOT_URL+"employees", Employee[].class);
-        Employee[] pageList = person.getBody();
+        ResponseEntity<Employe[]> person = restTemplate.getForEntity(ROOT_URL+"employees", Employe[].class);
+        Employe[] pageList = person.getBody();
         model.addAttribute("pagelistweb", pageList);
-        Employee newEmployee = new Employee();
-        model.addAttribute("newemployee", newEmployee);
-        Employee putEmplpoyee = new Employee();
+        Employe newEmploye = new Employe();
+        model.addAttribute("newemployee", newEmploye);
+        Employe putEmplpoyee = new Employe();
         model.addAttribute("putemployee", putEmplpoyee);
         return "HomePage";
     }
@@ -36,35 +36,36 @@ public class PortalWebController {
 
     @GetMapping("/web/post")
     public String addEmployeeGet(Model model){
+
         return "HomePage";
     }
 
     @PostMapping("/web/post")
-    public String addEmployee(Employee newemployee) throws Exception {
+    public String addEmployee(Employe newemployee) throws Exception {
         restTemplate = new RestTemplate();
-        restTemplate.postForObject(ROOT_URL + "emploees", newemployee, Employee.class);
+        restTemplate.postForObject(ROOT_URL + "emploees", newemployee, Employe.class);
         return "redirect:/web/get";
     }
 
     @PutMapping("/web/put}")
-    public String putEmployeeOne (@RequestBody Employee putemployee) throws Exception {
+    public String putEmployeeOne (@RequestBody Employe putemployee) throws Exception {
         restTemplate = new RestTemplate();
-        restTemplate.put(ROOT_URL + "employees/{id}", putemployee, Employee.class);
+        restTemplate.put(ROOT_URL + "employees/{id}", putemployee, Employe.class);
         return "redirect:/web/get";
     }
 
     @DeleteMapping("/web/{id}")
     public String delEmploeeOne (@PathVariable(value = "id") long id, Model model){
         restTemplate = new RestTemplate();
-        restTemplate.delete(ROOT_URL + "employees/{id}", Employee.class);
+        restTemplate.delete(ROOT_URL + "employees/{id}", Employe.class);
         // TO REST: DELETE -> http://localhost:8090/emploees/55
         return "redirect:/web/get";
     }
     @GetMapping("/save")
     public String saveMyFile (Model model) {
         restTemplate=new RestTemplate();
-        ResponseEntity<Employee[]> person = restTemplate.getForEntity(ROOT_URL+"employees", Employee[].class);
-        Employee[] pageList = person.getBody();
+        ResponseEntity<Employe[]> person = restTemplate.getForEntity(ROOT_URL+"employees", Employe[].class);
+        Employe[] pageList = person.getBody();
         SaveFileExcel.saveFile(pageList);
     return "HomePage";
     }
